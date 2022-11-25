@@ -1,0 +1,117 @@
+koloda = [6,7,8,9,10,2,3,4,11] * 4
+
+import random
+
+
+random.shuffle(koloda)
+print("Поиграем в очко")
+count = 0
+aifpk = 0
+while True:
+    choice = input('Будете брать карту? y/n\n')
+    if choice == 'y':
+        current = koloda.pop()
+        print("Вам попалась карта достоинством %d" %current)
+        count += current
+        if count >21:
+            print("ваш счет %d" %count)
+            print("Извини у тебя перебор и ты продул!")
+            break
+        elif count == 21:
+            print("Поздравляю у тебя 21 и ты победил!")
+            break
+        else:
+            print("У вас %d очков" %count)
+
+    elif choice == 'n':
+        fpk = koloda.pop()
+        aifpk += fpk
+        print("У крупье выпало %d " %fpk)
+
+        if fpk < count:
+            print("Крупье решает брать ему карту или нет")
+            ai = random.randint(1,2)
+            print("Искуственный интелект выбор говорит= " +str(ai))
+
+            if ai == 1:
+
+                fpk = koloda.pop()
+                aifpk += fpk
+                if aifpk ==21:
+                    if aifpk > count:
+                        print("Крупье выпало %d" %aifpk)
+                        print("У вас %d" %count)
+                        print("Крупье выигрывает с 21")
+                        break
+                    elif aifpk == count:
+                        print("Крупье выпало %d" %aifpk)
+                        print("У вас %d" %count)
+                        print("У вас ничья!")
+                        break
+                    elif aifpk < count:
+                        print("Крупье выпало %d" %aifpk)
+                        print("У вас %d" %count)
+                        print("Крупье продул!")
+                    if aifpk > 21:
+                        print("Крупье выпало %d" %aifpk)
+                        print("У вас %d" %count)
+                        print("Крупье проиграл у него больше 21")
+                        break
+                print("Крупье выпало %d" %aifpk)
+                print("У вас %d" %count)
+            elif ai == 2:
+                if aifpk > 17:
+
+                    print("Крупье останавливает игру и просит сравнение")
+                    if aifpk > count:
+                        if aifpk < 21:
+                            print("Крупье выпало %d" %aifpk)
+                            print("У вас %d" %count)
+                            print("У крупье больше счет  чем у вас и он выигрывает!")
+                            break
+                        elif aifpk >21:
+                            print("Крупье выпало %d" %aifpk)
+                            print("У вас %d" %count)
+                            print("У крупье больше 21 и он проигрывает!")
+                            break
+
+                    elif aifpk == count:
+                        print("Крупье выпало %d" %aifpk)
+                        print("У вас %d" %count)
+                        print("У вас ничья!")
+                        break
+                    elif aifpk < count:
+                        print("У вас болше чем у крупье и вы победили!")
+                        print("Крупье выпало %d" %aifpk)
+                        print("У вас %d" %count)
+                        break
+                elif aifpk <10:
+                    fpk = koloda.pop()
+                    aifpk += fpk
+                    print("Крупье выпало %d" %aifpk)
+                    if aifpk > count:
+                        if aifpk < 21:
+                            print("Крупье выпало %d" %aifpk)
+                            print("У вас %d" %count)
+                            print("У крупье больше счет  чем у вас и он выигрывает!")
+                            break
+                        elif aifpk >21:
+                            print("Крупье выпало %d" %aifpk)
+                            print("У вас %d" %count)
+                            print("У крупье больше 21 и он проигрывает!")
+                            break
+
+                        elif aifpk == count:
+                            print("Крупье выпало %d" %aifpk)
+                            print("У вас %d" %count)
+                            print("У вас ничья!")
+                            break
+                        elif aifpk < count:
+                            print("У вас болше чем у крупье и вы победили!")
+                            print("Крупье выпало %d" %aifpk)
+                            print("У вас %d" %count)
+                            break
+            else:
+                print("Крупье скинул карты и проиграл!")
+                break
+print("До новых встреч!")
