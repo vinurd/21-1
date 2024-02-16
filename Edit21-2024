@@ -26,12 +26,14 @@ while x ==1:
             else:
                 print("У вас %d очков" % count)
         case "n":
+            fpk = koloda.pop()
+            aifpk += fpk
+            print("У крупье выпало %d " % fpk)
             x = 2
 while x == 2:
 
-    fpk = koloda.pop()
-    aifpk += fpk
-    print("У крупье выпало %d " %fpk)
+
+
     if fpk < count:
         print("Крупье решает брать ему карту или нет")
         ai = random.randint(1, 2)
